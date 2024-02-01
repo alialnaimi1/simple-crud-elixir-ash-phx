@@ -1,0 +1,14 @@
+<.flash_group flash={@flash} />
+<h2>Products</h2>
+<div>
+    <%= for product <- @products do %>
+        <div>
+            <div><%= product.title %> <button phx-click="edit_product" phx-value-product-id={product.id}>Edit</button> <button phx-click="delete_product" phx-value-product-id={product.id}>delete</button></div>
+        </div>
+    <% end %>
+</div>
+<.form for={@form} phx-submit="add_product">
+  <.input type="text" field={@form[:title]} />
+  <.input type="hidden" field={@form[:id]} />
+  <button>Save</button>
+</.form>
